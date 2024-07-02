@@ -18,7 +18,7 @@
         }
 
         .bg-sidebar {
-            background: #ffa500;
+            background: grey;
         }
 
         .cta-btn {
@@ -38,7 +38,7 @@
         }
 
         .nav-item:hover {
-            background: #ff9000;
+            background: #000;
         }
 
         .account-link:hover {
