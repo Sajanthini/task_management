@@ -43,9 +43,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function categories()
+    public function projects()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Project::class);
     }
 
     public function createdTasks()

@@ -10,9 +10,9 @@ class Task extends Model
     use HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function category()
+    public function project()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Project::class);
     }
 
     public function user()

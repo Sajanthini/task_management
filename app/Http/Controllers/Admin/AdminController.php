@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 
@@ -14,11 +14,11 @@ class AdminController extends Controller
         if (auth()->user()->role->name == "Admin") {
 
             $users = User::count();
-            $categories = Category::count();
+            $projects = Project::count();
             $tasks = Task::count();
             $completedTasks = Task::whereCompleted(true)->count();
 
-            return view('admin.index', compact('users', 'categories', 'tasks', 'completedTasks'));
+            return view('admin.index', compact('users', 'projects', 'tasks', 'completedTasks'));
         } elseif (auth()->user()->role->name == "Employee") {
 
             $tasks = Task::where('assigned_to_user_id', auth()->id())->count();
@@ -26,5 +26,7 @@ class AdminController extends Controller
 
             return view('admin.index', compact('tasks', 'completedTasks'));
         }
+
+        
     }
 }

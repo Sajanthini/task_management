@@ -33,17 +33,17 @@
                             @enderror
                         </div>
                         <div class="mb-1">
-                            <label for="chooseCategory"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Category</label>
+                            <label for="chooseProject"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Project</label>
                             <select
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                id="chooseCategory" name="category_id" required>
-                                <option value="">Select category</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $task->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                id="chooseProject" name="project_id" required>
+                                <option value="">Select project</option>
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->id }}" {{ $task->project_id == $project->id ? 'selected' : '' }}>{{ $project->name }}</option>
                                 @endforeach
                             </select>
-                            @error('category_id')
+                            @error('project_id')
                                 <div class="bg-yellow-300 text-red-700">{{ $message }}</div>
                             @enderror
                         </div>
@@ -71,7 +71,7 @@
                             id="message" name="description" required>{{ $task->description }}</textarea>
                     </div>
                     <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded">Update
-                        Category</button>
+                        Project</button>
                 </form>
             </div>
         </main>

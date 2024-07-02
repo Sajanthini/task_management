@@ -26,17 +26,17 @@
                         @enderror
                     </div>
                     <div class="mb-1">
-                        <label for="chooseCategory"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Category</label>
+                        <label for="chooseProjects"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Project</label>
                         <select
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            id="chooseCategory" name="category_id" wire:model="category_id" required>
-                            <option value="">Select category</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            id="chooseProject" name="project_id" wire:model="project_id" required>
+                            <option value="">Select project</option>
+                            @foreach ($projects as $project)
+                                <option value="{{ $project->id }}">{{ $project->name }}</option>
                             @endforeach
                         </select>
-                        @error('category_id')
+                        @error('project_id')
                             <div class="bg-yellow-300 text-red-700">{{ $message }}</div>
                         @enderror
                     </div>
@@ -72,7 +72,7 @@
         <p class="text-xl pb-3 flex items-center">
             <i class="fas fa-list mr-3"></i> Tasks Records
         </p>
-        {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded mb-2" onclick="location.href='{{ route('admin.categories.create') }}';">Add Category</button> --}}
+        {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded mb-2" onclick="location.href='{{ route('admin.projects.create') }}';">Add Project</button> --}}
         <div class="bg-white overflow-auto">
             <table class="text-left w-full border-collapse">
                 <thead>
@@ -117,7 +117,7 @@
                                     type="button"
                                     onclick="location.href='{{ route('admin.tasks.edit', $task->id) }}';">Edit</button>
 
-                                {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.categories.edit', $category->id) }}';">Edit</button> --}}
+                                {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.projects.edit', $project->id) }}';">Edit</button> --}}
                                 <form type="submit" method="POST" style="display: inline"
                                     action="{{ route('admin.tasks.destroy', $task->id) }}"
                                     onsubmit="return confirm('Are you sure?')">

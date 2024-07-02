@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
@@ -11,15 +11,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/csrf-token', function () {
+    return response()->json(['csrf_token' => csrf_token()]);
+});
+
+Route::get('/admin', function () {
+    return view('admin.index');
+})->middleware(['auth', 'verified'])->name('admin');
 
 Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
 
     Route::middleware('can:admin-only')->group(function () {
-        Route::resource('categories', CategoryController::class);
+        Route::resource('projects', ProjectController::class);
         Route::resource('tasks', TaskController::class);
         Route::resource('users', UserController::class);
     });

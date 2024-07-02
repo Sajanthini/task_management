@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
-use App\Models\Category;
+use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,9 +20,9 @@ class TaskController extends Controller
     {
 
         $users = User::select('id', 'name')->get();
-        $categories = Category::select('id', 'name')->get();
+        $projects = Project::select('id', 'name')->get();
 
-        return view('admin.task.edit', compact('task', 'users', 'categories'));
+        return view('admin.task.edit', compact('task', 'users', 'projects'));
     }
 
     public function update(TaskRequest $request, Task $task)
@@ -41,7 +41,7 @@ class TaskController extends Controller
 
     public function showAuthAssignedTasks()
     {
-        $authAssignedTasks = Task::with('user', 'category')
+        $authAssignedTasks = Task::with('user', 'project')
             ->where('assigned_to_user_id', auth()->id())->paginate(15);
 
         return view('admin.task.assigned_tasks', compact('authAssignedTasks'));
@@ -64,7 +64,7 @@ class TaskController extends Controller
 
     public function showSingleAssignedTask($id)
     {
-        $task = Task::with('user', 'category')
+        $task = Task::with('user', 'project')
             ->where('assigned_to_user_id', auth()->id())->findOrFail($id);
 
         return view('admin.task.show_single_assign_task', compact('task'));

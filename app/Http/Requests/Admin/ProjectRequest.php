@@ -5,7 +5,7 @@ use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class ProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,7 +18,7 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:3', 'max:50', Rule::unique('categories')->ignore($this?->category?->id)],
+            'name' => ['required', 'min:3', 'max:50', Rule::unique('projects')->ignore($this?->project?->id)],
         ];
     }
 }

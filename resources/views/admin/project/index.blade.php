@@ -1,5 +1,5 @@
 <x-admin-layout>
 
-    <livewire:category>
+    <livewire:project>
 
 </x-admin-layout>

@@ -1,13 +1,13 @@
 <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
     <main class="w-full flex-grow p-6">
-        <h1 class="w-full text-3xl text-black pb-6">Categories</h1>
+        <h1 class="w-full text-3xl text-black pb-6">Projects</h1>
         <div class="w-full mt-1 ">
             <form method="POST" wire:submit.prevent="store">
                 @csrf
                 <div class="grid mb-6 md:grid-cols-2 ">
                     <div class="mb-1">
                         <label for="name"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project
                             Name</label>
                         <input type="text" wire:model="name" name="name" id="name"
                             value="{{ old('name') }}"
@@ -17,7 +17,7 @@
                             <div class="bg-yellow-300 text-red-700">{{ $message }}</div>
                         @enderror
                         <button class="px-4  mt-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded">Add
-                            Category</button>
+                            Project</button>
                     </div>
                     {{--  --}}
                 </div>
@@ -27,9 +27,9 @@
         <x-session-message />
 
         <p class="text-xl pb-3 flex items-center">
-            <i class="fas fa-list mr-3"></i> Categories Records
+            <i class="fas fa-list mr-3"></i> Projects Records
         </p>
-        {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded mb-2" onclick="location.href='{{ route('admin.categories.create') }}';">Add Category</button> --}}
+        {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded mb-2" onclick="location.href='{{ route('admin.projects.create') }}';">Add Project</button> --}}
         <div class="bg-white overflow-auto">
             <table class="text-left w-full border-collapse">
                 <thead>
@@ -49,17 +49,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($projects as $project)
                         <tr class="hover:bg-grey-lighter">
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $category->id }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $category->name }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $category->user->name }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $project->id }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $project->name }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $project->user->name }}</td>
                             <td class="py-4 px-6 border-b border-grey-light">
-                                <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.categories.edit', $category->id) }}';">Edit</button>
+                                <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.projects.edit', $project->id) }}';">Edit</button>
 
-                                {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.categories.edit', $category->id) }}';">Edit</button> --}}
+                                {{-- <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.projects.edit', $project->id) }}';">Edit</button> --}}
                                 <form type="submit" method="POST" style="display: inline"
-                                    action="{{ route('admin.categories.destroy', $category->id) }}"
+                                    action="{{ route('admin.projects.destroy', $project->id) }}"
                                     onsubmit="return confirm('Are you sure?')">
                                     @csrf
                                     @method('DELETE')
@@ -71,7 +71,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $categories->links() }}
+            {{ $projects->links() }}
         </div>
     </main>
 </div>

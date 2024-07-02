@@ -25,7 +25,7 @@ class TaskRequest extends FormRequest
             'title' => 'required|min:6|max:255',
             'description' => 'required|min:6|max:500',
             'due_date' => 'required|date|date_format:Y-m-d|after_or_equal:today',
-            'category_id' => 'required|exists:categories,id',
+            'project_id' => 'required|exists:projects,id',
             'assigned_to_user_id' => 'nullable|exists:users,id',
         ];
     }

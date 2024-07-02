@@ -29,9 +29,9 @@
                         {{ $task->completed_at ?? "None" }}
                     </div>
                     <div class="mb-1">
-                        <label for="Category"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        {{ $task->category->name }}
+                        <label for="Project"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project</label>
+                        {{ $task->project->name }}
                     </div>
                     <div class="mb-1">
                         <label for="assignedUser"

@@ -17,9 +17,9 @@
 
                     <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white ">
                         <div class="px-10 py-6">
-                            <div class="font-bold text-xl mb-2 text-center">Categories</div>
+                            <div class="font-bold text-xl mb-2 text-center">Projects</div>
                             <p class="text-gray-700 text-5xl text-center">
-                                {{ $categories }}
+                                {{ $projects }}
                             </p>
                         </div>
                     </div>
